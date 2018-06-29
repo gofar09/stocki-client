@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Stocki: The Stock App</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,37 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Stocki</h1>
+      <form id="sign-up-form">
+               <input name="credentials[email]" placeholder="Email" type="email">
+               <input name="credentials[password]" placeholder="Password" type="password">
+               <input name="credentials[password_confirmation]" placeholder="Confirm Password" type="password">
+               <button type="submit">Register</button>
+               <p class="SignUpFeedback"></p>
+             </form>
+      <form id="sign-in-form">
+                <input class="inputReset" name="credentials[email]" placeholder="Email" type="email">
+                <input class="inputReset" name="credentials[password]" placeholder="Password" type="password">
+                <button type="submit" class="signInButton">Sign In</button>
+                <br>
+      </form>
+              <p class="signInFeedback"></p>
+
+      <form id="change-password-form">
+          <input class="inputReset" name="passwords[old]" placeholder="Old Password" type="password">
+          <input class="inputReset" name="passwords[new]" placeholder="New Password" type="password">
+          <button type="submit">Change Password</button>
+          <br>
+      </form>
+              <p class="ChangePasswordFeedback"></p>
+      <button class="btn btn-primary" id="sign-out-button">Sign Out</button>
+      <br>
+      <form id="add-stock-form">
+        <input class="inputReset" name="stock[symbol]" placeholder="Stock Symbol" type="text">
+        <input class="inputReset" name="stock[name]" placeholder="Stock Name" type="text">
+        <input class="inputReset" name="stock[shares]" placeholder="Number of Shares" type="number">
+        <button type="submit">Add Stock</button>
+      </form>
+
     </body>
 </html>
