@@ -11,4 +11,12 @@ $(() => {
   $('#sign-in-form').on('submit', events.onSignIn)
   $('#change-password-form').on('submit', events.onChangePassword)
   $('#sign-out-button').click(events.onSignOut)
+
+  $('#add-stock-form').on('submit', events.onAddStock)
+  $('#update-stock-form').on('submit', events.onUpdateStock)
+  $('#delete-stock-form').on('submit', events.onDeleteStock)
+  $('#get-stocks-button').on('click', events.onGetStocks)
+  $('#delete-stock-form').on('submit', events.onDeleteStock)
+
+  $('.content').on('click', '.delete-button', events.onDeleteStock)
 })

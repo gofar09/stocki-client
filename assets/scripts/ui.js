@@ -1,4 +1,11 @@
 const store = require('./store')
+const showStockList = require('./templates/stock-listing.handlebars')
+
+const getStocksSuccess = function (getStocksResponse) {
+  console.log(getStocksResponse)
+  const showStocksHtml = showStockList({ stocks: getStocksResponse.stocks })
+  $('.content').html(showStocksHtml)
+}
 
 const signUpSuccess = function (signUpResponse) {
   $('.SignUpFeedback').html('You have successfully registered.')
@@ -12,6 +19,7 @@ const signUpError = function () {
 
 const signInSuccess = function (response) {
   store.user = response.user
+  console.log(store.user.id)
   $('.signInFeedback').html('You have successfully signed in.')
   // $('#sign-in-button').toggle()
   // $('#change-password-button').toggle()
@@ -27,12 +35,12 @@ const signInError = function () {
 }
 
 const changePasswordSuccess = function (changePasswordResponse) {
-  $('.failedChangePassword').html('You have successfully changed your password.')
+  $('.ChangePasswordFeedback').html('You have successfully changed your password.')
   $('#change-password-form')[0].reset()
 }
 
 const changePasswordError = function () {
-  $('.failedChangePassword').html('Password is incorrect.')
+  $('.ChangePasswordFeedback').html('Password is incorrect.')
   $('#change-password-form')[0].reset()
 }
 
@@ -54,5 +62,7 @@ module.exports = {
   signInSuccess,
   signInError,
   changePasswordSuccess,
-  signOutSuccess
+  signOutSuccess,
+  changePasswordError,
+  getStocksSuccess
 }

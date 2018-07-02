@@ -1,6 +1,57 @@
 const store = require('./store')
 const config = require('./config')
 
+const addStock = function (data) {
+  // console.log('stock data is', data)
+  // console.log('token is', store.user.token)
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + 'stocks',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const getStocks = function () {
+  // console.log('stock data is', data)
+  // console.log('token is', store.user.token)
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + 'stocks',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateStock = function (data) {
+  console.log('stock data is', data)
+  // console.log('token is', store.user.token)
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + 'stocks/' + data.stock.ID,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const deleteStock = function (data) {
+  console.log('stock data is', data)
+  // console.log('token is', store.user.token)
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + 'stocks/' + data,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 const signUp = function (data) {
   return $.ajax({
     method: 'POST',
@@ -41,5 +92,9 @@ module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  addStock,
+  updateStock,
+  deleteStock,
+  getStocks
 }

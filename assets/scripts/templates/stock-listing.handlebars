@@ -1,0 +1,12 @@
+{{#each stocks as |stock|}}
+  {{log stock}}
+ <div data-id="{{stock.id}}">
+
+    Symbol: {{stock.symbol}}
+
+    Shares: {{stock.shares}}
+
+    <button class="delete-button" data-id="{{stock.id}}">Delete</button>
+
+</div>
+{{/each}}
