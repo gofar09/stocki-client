@@ -27,7 +27,7 @@ const getStocks = function () {
 }
 
 const updateStock = function (data) {
-  console.log('stock data is', data)
+  // console.log('stock data is', data)
   // console.log('token is', store.user.token)
   return $.ajax({
     method: 'PATCH',
@@ -40,7 +40,7 @@ const updateStock = function (data) {
 }
 
 const deleteStock = function (data) {
-  console.log('stock data is', data)
+  // console.log('stock data is', data)
   // console.log('token is', store.user.token)
   return $.ajax({
     method: 'DELETE',

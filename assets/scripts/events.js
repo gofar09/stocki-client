@@ -49,6 +49,9 @@ const onSignIn = function (event) {
   authApi.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInError)
+    .then(authApi.getStocks)
+    .then(ui.getStocksSuccess)
+    .catch(ui.getStocksError)
 }
 
 const onChangePassword = function (event) {
