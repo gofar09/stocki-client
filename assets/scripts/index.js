@@ -19,4 +19,6 @@ $(() => {
   $('#delete-stock-form').on('submit', events.onDeleteStock)
 
   $('.content').on('click', '.delete-button', events.onDeleteStock)
+  $('.content').on('click', '.update-button', events.updateFormShow)
+  $('.content').on('submit', '.stock-update-form', events.onUpdateStock)
 })
