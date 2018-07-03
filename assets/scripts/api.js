@@ -31,7 +31,7 @@ const updateStock = function (data) {
   // console.log('token is', store.user.token)
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + 'stocks/' + data.stock.ID,
+    url: config.apiUrl + 'stocks/' + data.stock.id,
     headers: {
       Authorization: 'Token token=' + store.user.token
     },

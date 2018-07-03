@@ -1,12 +1,16 @@
 {{#each stocks as |stock|}}
   {{log stock}}
- <div data-id="{{stock.id}}">
-
-    Symbol: {{stock.symbol}}
-
-    Shares: {{stock.shares}}
-
-    <button class="delete-button" data-id="{{stock.id}}">Delete</button>
-
+ <div class="card" data-id="{{stock.id}}">
+     <div class="card-body col-sm-2 col-med-2">
+  <p class="card-text">  Symbol: {{stock.symbol}}
+<br>
+    Shares: {{stock.shares}}</p>
+    <form class="stock-update-form update-form-{{stock.id}}" data-id="{{stock.id}}">
+      <input class="inputReset" name="stock[shares]" placeholder="New Share Amount" type="number">
+      <button type="submit">Update Share Amount</button>
+    </form>
+    <button class="update-button" data-id="{{stock.id}}">Add/Remove Shares</button>
+    <button class="delete-button" data-id="{{stock.id}}">Delete Stock</button>
+  </div>
 </div>
 {{/each}}
