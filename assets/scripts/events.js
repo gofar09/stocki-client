@@ -10,7 +10,9 @@ const onCheckPrice = function () {
 
 const onAddStock = function (event) {
   event.preventDefault()
-  const data = getFormFields(event.target)
+  let data = getFormFields(event.target)
+  data.stock.symbol = data.stock.symbol.toUpperCase()
+  console.log('data is ', data)
   authApi.addStock(data)
     .then(ui.addStockSuccess)
     .catch(ui.addStockError)

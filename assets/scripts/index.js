@@ -14,8 +14,6 @@ $(() => {
 
   $('#add-stock-form').on('submit', events.onAddStock)
   $('#update-stock-form').on('submit', events.onUpdateStock)
-  // $('#delete-stock-form').on('submit', events.onDeleteStock)
-  // $('#delete-stock-form').on('submit', events.onDeleteStock)
 
   $('.content').on('click', '.delete-button', events.onDeleteStock)
   $('.content').on('click', '.update-button', events.updateFormShow)
