@@ -1,14 +1,19 @@
 const store = require('./store')
 const showStockList = require('./templates/stock-listing.handlebars')
 
+const priceDisplay = () => {
+  for (let i = 0; i < store.stockPrices['Stock Quotes'].length; i++) {
+    $('.price-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Current price: $' + store.stockPrices['Stock Quotes'][i]['2. price'])
+  }
+}
+
 const checkPriceSuccess = function (checkPriceResponse) {
-  console.log('Price response is', checkPriceResponse)
   store.stockPrices = checkPriceResponse
+  priceDisplay()
 }
 
 const getStocksSuccess = function (getStocksResponse) {
   store.userStocks = getStocksResponse.stocks
-  console.log('store.userStocks is', store.userStocks)
   const showStocksHtml = showStockList({ stocks: getStocksResponse.stocks })
   $('.content').html(showStocksHtml)
 }
@@ -18,6 +23,10 @@ const signUpSuccess = function (signUpResponse) {
   $('#sign-up-form')[0].reset()
 }
 
+const addStockSuccess = function () {
+  $('#add-stock-form')[0].reset()
+}
+
 const signUpError = function () {
   $('.SignUpFeedback').html('Email unavailable or password mismatch.')
   $('#sign-up-form')[0].reset()
@@ -25,14 +34,14 @@ const signUpError = function () {
 
 const signInSuccess = function (response) {
   store.user = response.user
-  console.log(store.user.id)
-  $('.signInFeedback').html('You have successfully signed in.')
-  // $('#sign-in-button').toggle()
-  // $('#change-password-button').toggle()
-  // $('#sign-out-button').toggle()
-  // $('#register-button').toggle()
-  // $('.emailDisplay').html('Signed in as: ' + store.user.email)
+  $('.signInFeedback').html('')
+  $('#sign-in-form').toggle()
+  $('#change-password-form').toggle()
+  $('#sign-out-button').toggle()
+  $('#sign-up-form').toggle()
+  $('.emailDisplay').html('Signed in as: ' + store.user.email)
   $('#sign-in-form')[0].reset()
+  $('.sign-in-hider').toggle()
 }
 
 const signInError = function () {
@@ -51,14 +60,15 @@ const changePasswordError = function () {
 }
 
 const signOutSuccess = function (signOutResponse) {
-  // $('#sign-in-button').toggle()
-  // $('#change-password-button').toggle()
-  // $('#sign-out-button').toggle()
-  // $('#register-button').toggle()
-  // $('.emailDisplay').html('')
+  $('#sign-in-form').toggle()
+  $('#change-password-form').toggle()
+  $('#sign-out-button').toggle()
+  $('#sign-up-form').toggle()
+  $('.emailDisplay').html('')
   $('.signInFeedback').html('')
   $('.ChangePasswordFeedback').html('')
   $('.SignUpFeedback').html('')
+  $('.sign-in-hider').toggle()
   delete store.user
 }
 
@@ -71,5 +81,6 @@ module.exports = {
   signOutSuccess,
   changePasswordError,
   getStocksSuccess,
-  checkPriceSuccess
+  checkPriceSuccess,
+  addStockSuccess
 }

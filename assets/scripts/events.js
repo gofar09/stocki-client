@@ -21,13 +21,10 @@ const onUpdateStock = function (event) {
   event.preventDefault()
   const updateData = getFormFields(event.target)
   updateData.stock['id'] = $(event.target).data('id')
-  console.log('first data', updateData)
-  // data.id = $(this).data('id')
-  // console.log('new data is', data)
-  // data.push($(this).data('id'))
   authApi.updateStock(updateData)
     .then(ui.updateStockSuccess)
     .catch(ui.updateStockError)
+    .then(onGetStocks)
 }
 
 const onDeleteStock = function (event) {
@@ -40,7 +37,6 @@ const onDeleteStock = function (event) {
 }
 
 const onGetStocks = function (event) {
-  // event.preventDefault()
   authApi.getStocks()
     .then(ui.getStocksSuccess)
     .catch(ui.getStocksError)
@@ -50,6 +46,7 @@ const onGetStocks = function (event) {
 const updateFormShow = function (event) {
   event.preventDefault()
   $('.update-form-' + $(this).data('id')).show()
+  $('.update-button').hide()
 }
 
 // Auth Events Below
@@ -69,8 +66,6 @@ const onSignIn = function (event) {
     .then(ui.signInSuccess)
     .catch(ui.signInError)
     .then(onGetStocks)
-    // .then(ui.getStocksSuccess)
-    // .catch(ui.getStocksError)
 }
 
 const onChangePassword = function (event) {

@@ -29,6 +29,7 @@
       </form>
               <p class="signInFeedback"></p>
 
+              <p class="emailDisplay"></p>
       <form id="change-password-form">
           <input class="inputReset" name="passwords[old]" placeholder="Old Password" type="password">
           <input class="inputReset" name="passwords[new]" placeholder="New Password" type="password">
@@ -37,12 +38,11 @@
       </form>
               <p class="ChangePasswordFeedback"></p>
       <button class="btn btn-primary" id="sign-out-button">Sign Out</button>
-      <br>
-      <br>
-      <button class="btn btn-primary" id="get-stocks-button">Get Stocks</button>
-      <br>
-      <br>
 
+      <div class="sign-in-hider">
+        <hr>
+        <br>
+        <br>
       <form id="add-stock-form">
         <input class="inputReset" name="stock[symbol]" placeholder="Stock Symbol" type="text">
         <input class="inputReset" name="stock[shares]" placeholder="Number of Shares" type="number">
@@ -50,14 +50,11 @@
       </form>
       <br>
       <br>
-      <!-- <form id="delete-stock-form">
-        <input class="inputReset" name="stock[ID]" placeholder="Stock ID" type="number">
-        <button type="submit">Delete Stock</button>
-      </form> -->
 
       <div class="card-deck">
       <div class="content row">
       </div>
     </div>
+  </div>
     </body>
 </html>
