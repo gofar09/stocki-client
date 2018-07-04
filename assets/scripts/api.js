@@ -8,8 +8,6 @@ const checkPrice = function () {
     stockData.push(store.userStocks[i].symbol)
   }
   const symbolSplice = stockData.join(',')
-  // console.log('Stockdata is', stockData)
-  // console.log('symbolSplice is', symbolSplice)
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + 'prices',
@@ -25,8 +23,6 @@ const checkPrice = function () {
 }
 
 const addStock = function (data) {
-  // console.log('stock data is', data)
-  // console.log('token is', store.user.token)
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + 'stocks',
@@ -38,8 +34,6 @@ const addStock = function (data) {
 }
 
 const getStocks = function () {
-  // console.log('stock data is', data)
-  // console.log('token is', store.user.token)
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + 'stocks',
@@ -50,8 +44,6 @@ const getStocks = function () {
 }
 
 const updateStock = function (data) {
-  // console.log('stock data is', data)
-  // console.log('token is', store.user.token)
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + 'stocks/' + data.stock.id,
@@ -63,8 +55,6 @@ const updateStock = function (data) {
 }
 
 const deleteStock = function (data) {
-  // console.log('stock data is', data)
-  // console.log('token is', store.user.token)
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + 'stocks/' + data,
