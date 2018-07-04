@@ -1,10 +1,11 @@
 {{#each stocks as |stock|}}
-  {{log stock}}
+  <!-- {{log stock}} -->
  <div class="card" data-id="{{stock.id}}">
      <div class="card-body col-sm-2 col-med-2">
   <p class="card-text">  Symbol: {{stock.symbol}}
 <br>
     Shares: {{stock.shares}}</p>
+    <p class="price-input-{{stock.symbol}}">No pricing data available.</p>
     <form class="stock-update-form update-form-{{stock.id}}" data-id="{{stock.id}}">
       <input class="inputReset" name="stock[shares]" placeholder="New Share Amount" type="number">
       <button type="submit">Update Share Amount</button>

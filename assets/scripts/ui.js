@@ -1,8 +1,14 @@
 const store = require('./store')
 const showStockList = require('./templates/stock-listing.handlebars')
 
+const checkPriceSuccess = function (checkPriceResponse) {
+  console.log('Price response is', checkPriceResponse)
+  store.stockPrices = checkPriceResponse
+}
+
 const getStocksSuccess = function (getStocksResponse) {
-  console.log(getStocksResponse)
+  store.userStocks = getStocksResponse.stocks
+  console.log('store.userStocks is', store.userStocks)
   const showStocksHtml = showStockList({ stocks: getStocksResponse.stocks })
   $('.content').html(showStocksHtml)
 }
@@ -64,5 +70,6 @@ module.exports = {
   changePasswordSuccess,
   signOutSuccess,
   changePasswordError,
-  getStocksSuccess
+  getStocksSuccess,
+  checkPriceSuccess
 }

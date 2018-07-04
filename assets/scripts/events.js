@@ -2,12 +2,19 @@ const authApi = require('./api')
 const ui = require('./ui')
 const getFormFields = require('../../lib/get-form-fields')
 
+const onCheckPrice = function () {
+  authApi.checkPrice()
+    .then(ui.checkPriceSuccess)
+    .catch(ui.checkPriceError)
+}
+
 const onAddStock = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   authApi.addStock(data)
     .then(ui.addStockSuccess)
     .catch(ui.addStockError)
+    .then(onGetStocks)
 }
 
 const onUpdateStock = function (event) {
@@ -29,18 +36,20 @@ const onDeleteStock = function (event) {
   authApi.deleteStock(data)
     .then(ui.deleteStockSuccess)
     .catch(ui.deleteStockError)
+    .then(onGetStocks)
 }
 
 const onGetStocks = function (event) {
-  event.preventDefault()
+  // event.preventDefault()
   authApi.getStocks()
     .then(ui.getStocksSuccess)
     .catch(ui.getStocksError)
+    .then(onCheckPrice)
 }
 
 const updateFormShow = function (event) {
   event.preventDefault()
-$('.update-form-' + $(this).data('id')).show()
+  $('.update-form-' + $(this).data('id')).show()
 }
 
 // Auth Events Below
@@ -59,9 +68,9 @@ const onSignIn = function (event) {
   authApi.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInError)
-    .then(authApi.getStocks)
-    .then(ui.getStocksSuccess)
-    .catch(ui.getStocksError)
+    .then(onGetStocks)
+    // .then(ui.getStocksSuccess)
+    // .catch(ui.getStocksError)
 }
 
 const onChangePassword = function (event) {
@@ -88,5 +97,6 @@ module.exports = {
   onUpdateStock,
   onDeleteStock,
   onGetStocks,
-  updateFormShow
+  updateFormShow,
+  onCheckPrice
 }

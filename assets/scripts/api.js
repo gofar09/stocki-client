@@ -1,6 +1,29 @@
 const store = require('./store')
 const config = require('./config')
 
+const checkPrice = function () {
+  const stockData = []
+
+  for (let i = 0; i < store.userStocks.length; i++) {
+    stockData.push(store.userStocks[i].symbol)
+  }
+  const symbolSplice = stockData.join(',')
+  // console.log('Stockdata is', stockData)
+  // console.log('symbolSplice is', symbolSplice)
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + 'prices',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'price': {
+        'symbol': symbolSplice
+      }
+    }
+  })
+}
+
 const addStock = function (data) {
   // console.log('stock data is', data)
   // console.log('token is', store.user.token)
@@ -96,5 +119,6 @@ module.exports = {
   addStock,
   updateStock,
   deleteStock,
-  getStocks
+  getStocks,
+  checkPrice
 }
