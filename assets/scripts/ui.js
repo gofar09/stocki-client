@@ -69,6 +69,7 @@ const signOutSuccess = function (signOutResponse) {
   $('.ChangePasswordFeedback').html('')
   $('.SignUpFeedback').html('')
   $('.sign-in-hider').toggle()
+  $('#change-password-form')[0].reset()
   delete store.user
 }
 
