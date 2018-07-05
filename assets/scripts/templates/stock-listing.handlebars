@@ -5,12 +5,12 @@
   <p class="card-text">  Symbol: {{stock.symbol}}
 <br>
     Shares: {{stock.shares}}</p>
-    <p class="price-input-{{stock.symbol}}">No pricing data available.</p>
+    <p class="price-input-{{stock.symbol}}">No pricing data available. Please ensure symbol is accurate.</p>
     <form class="stock-update-form update-form-{{stock.id}}" data-id="{{stock.id}}">
       <input class="inputReset" name="stock[shares]" placeholder="New Share Amount" type="number">
       <button type="submit">Update Share Amount</button>
     </form>
-    <button class="update-button" data-id="{{stock.id}}">Add/Remove Shares</button>
+    <button class="update-button" data-id="{{stock.id}}">Change Share Amount</button>
     <button class="delete-button" data-id="{{stock.id}}">Delete Stock</button>
   </div>
 </div>

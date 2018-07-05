@@ -10,13 +10,17 @@ const onCheckPrice = function () {
 
 const onAddStock = function (event) {
   event.preventDefault()
-  let data = getFormFields(event.target)
-  data.stock.symbol = data.stock.symbol.toUpperCase()
-  console.log('data is ', data)
-  authApi.addStock(data)
-    .then(ui.addStockSuccess)
-    .catch(ui.addStockError)
-    .then(onGetStocks)
+  const data = getFormFields(event.target)
+  if (data.stock.symbol === '') {
+    $('.addStockMessage').text('Please enter stock symbol.')
+  } else {
+    data.stock.symbol = data.stock.symbol.toUpperCase()
+    console.log('data is ', data)
+    authApi.addStock(data)
+      .then(ui.addStockSuccess)
+      .catch(ui.addStockError)
+      .then(onGetStocks)
+  }
 }
 
 const onUpdateStock = function (event) {
