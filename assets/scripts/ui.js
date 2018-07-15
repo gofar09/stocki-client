@@ -8,8 +8,12 @@ const priceDisplay = () => {
 }
 
 const checkPriceSuccess = function (checkPriceResponse) {
-  store.stockPrices = checkPriceResponse
-  priceDisplay()
+  if (checkPriceResponse['Error Message'] === 'Invalid API call. Please retry or visit the docume…antage.co/documentation/) for BATCH_STOCK_QUOTES.') {
+    $('.content').html('Add stocks to track prices.')
+  } else {
+    store.stockPrices = checkPriceResponse
+    priceDisplay()
+  }
 }
 
 const getStocksSuccess = function (getStocksResponse) {

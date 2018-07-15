@@ -16,7 +16,6 @@ const onAddStock = function (event) {
   } else {
     $('.addStockMessage').text('')
     data.stock.symbol = data.stock.symbol.toUpperCase()
-    console.log('data is ', data)
     authApi.addStock(data)
       .then(ui.addStockSuccess)
       .catch(ui.addStockError)

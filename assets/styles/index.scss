@@ -16,3 +16,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .sign-in-hider {
   display: none;
 }
+
+.card-body {
+  border-width: 2px;
+  border-color: black;
+}
