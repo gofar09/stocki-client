@@ -8,6 +8,8 @@ const onCheckPrice = function () {
     .catch(ui.checkPriceError)
 }
 
+// Add stock to user object in database and initiates stock card display as well
+// as stock price check function
 const onAddStock = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -42,6 +44,7 @@ const onDeleteStock = function (event) {
     .then(onGetStocks)
 }
 
+// Contacts server to collect user stock information and inititates stock price API call
 const onGetStocks = function (event) {
   authApi.getStocks()
     .then(ui.getStocksSuccess)
@@ -49,6 +52,7 @@ const onGetStocks = function (event) {
     .then(onCheckPrice)
 }
 
+// Displays stock share update form on click of update share button
 const updateFormShow = function (event) {
   event.preventDefault()
   $('.update-form-' + $(this).data('id')).show()

@@ -1,12 +1,14 @@
 const store = require('./store')
 const config = require('./config')
 
+// Initiates AlphaVantage API stock price check through Stocki back-end
 const checkPrice = function () {
+  // Array for collecting all stock symbols belonging to current user
   const stockData = []
-
   for (let i = 0; i < store.userStocks.length; i++) {
     stockData.push(store.userStocks[i].symbol)
   }
+  // Splices together all user stock symbols into correct format for AlphaVantage API call
   const symbolSplice = stockData.join(',')
   return $.ajax({
     method: 'GET',
@@ -64,6 +66,8 @@ const deleteStock = function (data) {
     data: data
   })
 }
+
+// Authentication functions below
 
 const signUp = function (data) {
   return $.ajax({
