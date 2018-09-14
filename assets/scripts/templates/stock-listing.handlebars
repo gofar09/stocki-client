@@ -5,6 +5,7 @@
 <br>
     Shares: {{stock.shares}}</p>
     <p class="price-input-{{stock.symbol}}">No pricing data available. Please ensure symbol is accurate.</p>
+    <div class="value-input-{{stock.symbol}}" data-id="{{stock.shares}}"></div>
     <form class="stock-update-form update-form-{{stock.id}}" data-id="{{stock.id}}">
       <input class="inputReset" name="stock[shares]" placeholder="New Share Amount" type="number">
       <button type="submit">Update Share Amount</button>

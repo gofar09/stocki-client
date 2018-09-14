@@ -3,7 +3,10 @@ const showStockList = require('./templates/stock-listing.handlebars')
 
 const priceDisplay = () => {
   for (let i = 0; i < store.stockPrices['Stock Quotes'].length; i++) {
+    console.log('store is', store.userStocks)
+
     $('.price-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Current price: $' + store.stockPrices['Stock Quotes'][i]['2. price'])
+    $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Value of shares: $' + store.stockPrices['Stock Quotes'][i]['2. price'] * $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).data('id'))
   }
 }
 
