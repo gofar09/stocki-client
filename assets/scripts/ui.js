@@ -5,8 +5,8 @@ const priceDisplay = () => {
   for (let i = 0; i < store.stockPrices['Stock Quotes'].length; i++) {
     console.log('store is', store.userStocks)
 
-    $('.price-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Current price: $' + store.stockPrices['Stock Quotes'][i]['2. price'])
-    $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Value of shares: $' + store.stockPrices['Stock Quotes'][i]['2. price'] * $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).data('id'))
+    $('.price-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Current price: $' + Math.round(100 * store.stockPrices['Stock Quotes'][i]['2. price']) / 100)
+    $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Value of shares: $' + Math.round(100 * store.stockPrices['Stock Quotes'][i]['2. price'] * $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).data('id')) / 100)
   }
 }
 
