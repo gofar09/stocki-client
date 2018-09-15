@@ -5,8 +5,12 @@ const showStockList = require('./templates/stock-listing.handlebars')
 // data and share count to calculate total value of shares.
 const priceDisplay = () => {
   for (let i = 0; i < store.stockPrices['Stock Quotes'].length; i++) {
-    $('.price-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Current price: $' + Math.round(100 * store.stockPrices['Stock Quotes'][i]['2. price']) / 100)
-    $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).html('Value of shares: $' + Math.round(100 * store.stockPrices['Stock Quotes'][i]['2. price'] * $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).data('id')) / 100)
+    const stockSymbol = store.stockPrices['Stock Quotes'][i]['1. symbol']
+    const currentPrice = Math.round(100 * store.stockPrices['Stock Quotes'][i]['2. price']) / 100
+    const calculatedValue = Math.round(100 * store.stockPrices['Stock Quotes'][i]['2. price'] * $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).data('id')) / 100
+
+    $('.price-input-' + stockSymbol).html('Current price: $' + currentPrice)
+    $('.value-input-' + stockSymbol).html('Value of shares: $' + calculatedValue)
   }
 }
 
