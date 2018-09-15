@@ -4,8 +4,8 @@
   <p class="card-text">  Symbol: {{stock.symbol}}
 <br>
     Shares: {{stock.shares}}</p>
-    <p class="price-input-{{stock.symbol}}">No pricing data available. Please ensure symbol is accurate.</p>
-    <div class="value-input-{{stock.symbol}}" data-id="{{stock.shares}}"></div>
+    <p class="price-input-{{stock.symbol}}">Current price: Loading, please wait...</p>
+    <div class="value-input-{{stock.symbol}}" data-id="{{stock.shares}}">Value of shares: Loading, please wait...</div>
     <form class="stock-update-form update-form-{{stock.id}}" data-id="{{stock.id}}">
       <input class="inputReset" name="stock[shares]" placeholder="New Share Amount" type="number">
       <button type="submit">Update Share Amount</button>

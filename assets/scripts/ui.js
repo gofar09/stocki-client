@@ -5,10 +5,14 @@ const showStockList = require('./templates/stock-listing.handlebars')
 // data and share count to calculate total value of shares.
 const priceDisplay = () => {
   for (let i = 0; i < store.stockPrices['Stock Quotes'].length; i++) {
+    // Variable to store current stock symbol
     const stockSymbol = store.stockPrices['Stock Quotes'][i]['1. symbol']
+    // Gathering and rounding price of current stock
     const currentPrice = Math.round(100 * store.stockPrices['Stock Quotes'][i]['2. price']) / 100
+    // Calculating total value based off of price and number of shares store in a data-id
     const calculatedValue = Math.round(100 * store.stockPrices['Stock Quotes'][i]['2. price'] * $('.value-input-' + store.stockPrices['Stock Quotes'][i]['1. symbol']).data('id')) / 100
 
+    // jQuery updating stock card HTML to reflect price and value
     $('.price-input-' + stockSymbol).html('Current price: $' + currentPrice)
     $('.value-input-' + stockSymbol).html('Value of shares: $' + calculatedValue)
   }
